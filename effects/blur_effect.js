@@ -4,6 +4,7 @@ import Shell from 'gi://Shell';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
+import { ShaderShim } from './shader-compat.js';
 
 const getTintShaderSource = (extensionDir) => {
   const SHADER_PATH = GLib.build_filenamev([
@@ -22,7 +23,7 @@ const getTintShaderSource = (extensionDir) => {
 
 export const BlurEffect = GObject.registerClass(
   {},
-  class SearchLighBlurEffect extends Clutter.ShaderEffect {
+  class SearchLighBlurEffect extends ShaderShim {
     _init(params) {
       this._red = null;
       this._green = null;

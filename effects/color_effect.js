@@ -6,6 +6,7 @@ import Shell from 'gi://Shell';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
+import { ShaderShim } from './shader-compat.js';
 
 const getColorEffectShaderSource = (extensionDir) => {
   const SHADER_PATH = GLib.build_filenamev([
@@ -33,7 +34,7 @@ const getColorEffectShaderSource = (extensionDir) => {
 /// https://gjs-docs.gnome.org/clutter10~10_api/clutter.shadereffect
 export const ColorEffect = GObject.registerClass(
   {},
-  class SearchLightColorShader extends Clutter.ShaderEffect {
+  class SearchLightColorShader extends ShaderShim {
     _init(params) {
       this._red = null;
       this._green = null;
